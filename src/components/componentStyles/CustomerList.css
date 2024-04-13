@@ -1,0 +1,55 @@
+.customers {
+    display: flex;
+    flex-direction: column;
+}
+
+.customers-container {
+    margin: 1rem 5rem 0rem 5rem;
+}
+
+.customers-container > h2 {
+    margin-top: 0;
+}
+
+.customer {
+    background-color: var(--white);
+    border: 1px solid var(--outline);
+    margin: 0.5rem 0;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+/* Targets all the child elements of elements with the .customer class */
+.customer > * {
+    padding: 0.5rem;
+}
+
+.customer-info {
+    color: var(--outline);
+    font-family: "Roboto", sans-serif;
+}
+
+/* Targets any div that is a child of an element with the .customer class */
+.customer > div {
+    display: flex;
+    border-top: 1px solid var(--outline);
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Targets any element that is a child of a div that is a child of an element with the .customer class */
+.customer > div > * {
+    flex-basis: 22%;
+}
+
+.customer-search {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border: 1px solid var(--outline);
+    border-radius: 0.25rem;
+    margin-left: auto;
+}
+
+.customer-filter-bar {
+    display: flex;
+}
