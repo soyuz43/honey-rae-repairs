@@ -10,7 +10,7 @@ export const Ticket = ({ticket}) => {
 
   useEffect(() =>{
     getAllEmployees().then((employeesArray) => {
-      console.log(employeesArray)
+      
         setEmployees(employeesArray)
     })
   }, [])
