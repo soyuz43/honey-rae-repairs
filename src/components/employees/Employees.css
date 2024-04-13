@@ -1,0 +1,14 @@
+/** src/employees/Employees.css*/
+
+.employees {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 3rem;
+  }
+
+  .employees > * {
+    flex-basis: 31%;
+    margin: 0.5rem;
+  }

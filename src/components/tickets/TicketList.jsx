@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./componentStyles/TicketList.css";
+import "./TicketStyles/TicketList.css";
 import { Ticket } from "./Ticket.jsx";
-import { getAllTickets } from "../services/ticketService.jsx";
-import { getAllEmployees } from "../services/employeeServices.jsx";
+import { getAllTickets } from "../../services/ticketService.jsx";
+import { getAllEmployees } from "../../services/employeeServices.jsx";
 import { TicketFilterBar } from "./TicketFilterBar";
 
 export const TicketList = () => {

@@ -1,7 +1,7 @@
 // src/components/Ticket.jsx
 
 import { useEffect, useState } from "react";
-import { getAllEmployees } from "../services/employeeServices";
+import { getAllEmployees } from "../../services/employeeServices";
 
 
 export const Ticket = ({ticket}) => {

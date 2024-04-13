@@ -1,9 +1,8 @@
 // src/components/CustomerList.jsx
 import { useEffect, useState } from "react";
-import "./componentStyles/CustomerList.css";
-import { getNonStaffUsers } from "../services/userServices"; 
-
-
+import "./CustomerList.css";  // Make sure the path is correct based on your project structure
+import { getNonStaffUsers } from "../../services/userServices";
+import { User } from "../users/User";  // Make sure the path is correct based on your project structure
 
 export const CustomerList = () => {
   const [customers, setCustomers] = useState([]);
@@ -16,16 +15,11 @@ export const CustomerList = () => {
 
   return (
     <div className="customers">
+      <h2>Who we're currently servicing</h2>
       {customers.map((customerObj) => (
-        <div key={customerObj.id}>
-          <div className="customer-info">
-            <div>Name:</div>
-            <div>{customerObj.fullName}</div>
-            <div>Email:</div>
-            <div>{customerObj.email}</div>
-          </div>
-        </div>
+        <User key={customerObj.id} user={customerObj} />  
       ))}
     </div>
   );
 };
+
