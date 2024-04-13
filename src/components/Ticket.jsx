@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { getAllEmployees } from "../services/employeeServices";
 
 
-export const Ticket = ({ticket, name}) => {
+export const Ticket = ({ticket}) => {
   const [employees, setEmployees] = useState([])
   const [assignedEmployee, setAssignedEmployee] = useState({})
 
