@@ -1,13 +1,16 @@
 // src/App.jsx
-import { useEffect, useState } from "react";
-import { getAllTickets } from "./services/ticketService";
-import "./styles/App.css";
-import { TicketList } from "./components/TicketList";
+
+import React from "react";
+import { TicketList } from "./components/tickets/TicketList";
+import { CustomerList } from "./components/customers/CustomerList";
+import { EmployeeList } from "./components/employees/EmployeeList";
 
 export const App = () => {
-  return (
-    <>
-      <TicketList />
-    </>
-  );
+    return (
+        <>
+            <TicketList />
+            <CustomerList />
+            <EmployeeList />
+        </>
+    );
 };
