@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import { getStaffUsers } from "../../services/userServices";
-import { User } from "../users/User"; // Assuming you have a User component that is suitable for rendering user details
-import "./Employees.css"; // Make sure the CSS path is correct
+import { User } from "../users/User"; 
+import "./Employees.css"; 
 
 export const EmployeeList = () => {
     const [employees, setEmployees] = useState([]);

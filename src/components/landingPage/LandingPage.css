@@ -1,0 +1,24 @@
+/* src/components/landingPage/LandingPage.css */
+
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+.landing-container h1 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 2.5rem;
+}
+
+.landing-container p {
+    color: #555;
+    font-size: 1.2rem;
+    max-width: 600px; /* Ensures text is not too wide for easy reading */
+}
