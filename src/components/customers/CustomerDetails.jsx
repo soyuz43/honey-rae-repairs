@@ -7,5 +7,5 @@ export const CustomerDetails = () => {
 
     const { customerId } = useParams()
 
-    return <div>Customer #{customerId}</div>
+    return <div className="customer-header">Customer #{customerId}</div>
 };

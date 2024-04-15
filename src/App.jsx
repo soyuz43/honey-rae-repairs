@@ -13,16 +13,40 @@ export const App = () => {
         <Routes>
             <Route path="/" element={<Layout />}>
                 {/* Define nested routes here */}
-                <Route index element={<LandingPage />} />  
-                <Route path="/tickets" element={<TicketList />} />
-                <Route path="/employees" element={<EmployeeList />} />
-                <Route path="/customers" element={<CustomerList />}>
-                    <Route path=":customerId" element={<CustomerDetails />} />
-                </Route>
+                <Route index element={<LandingPage />} />
+                <Route path="tickets" element={<TicketList />} />
+                <Route path="employees" element={<EmployeeList />} />
+                <Route path="customers" element={<CustomerList />} />
+                <Route path="customers/:customerId" element={<CustomerDetails />} />
             </Route>
         </Routes>
     );
 };
+
+
+
+
+
+
+
+
+
+
+// export const App = () => {
+//     return (
+//         <Routes>
+//             <Route path="/" element={<Layout />}>
+//                 {/* Define nested routes here */}
+//                 <Route index element={<LandingPage />} />  
+//                 <Route path="/tickets" element={<TicketList />} />
+//                 <Route path="/employees" element={<EmployeeList />} />
+//                 <Route path="/customers" element={<CustomerList />}>
+//                 <Route path="customers/:customerId" element={<CustomerDetails />} />
+//                 </Route>
+//             </Route>
+//         </Routes>
+//     );
+// };
 
 
 
