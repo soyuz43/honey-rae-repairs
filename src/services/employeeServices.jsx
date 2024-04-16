@@ -5,3 +5,9 @@ export const getAllEmployees = () => {
     );
   };
   
+
+
+export const getEmployeeByUserId = (employeeUserId) => {
+  return fetch(`http://localhost:8088/users/${employeeUserId}?_embed=employees`)
+      .then(res => res.json());
+};

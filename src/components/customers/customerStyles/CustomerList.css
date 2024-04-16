@@ -1,3 +1,7 @@
+/* src/components/customers/customerStyles/CustomerList.css*/
+
+
+
 .customers {
     display: flex;
     flex-direction: column;
@@ -25,3 +29,5 @@
     line-height: 3rem;
     color: var(--primary);
   }
+  
+  

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getNonStaffUsers } from "../../services/userServices";
 import { User } from "../users/User";  
-import "./CustomerList.css";  
+import "./customerStyles/CustomerList.css";  
 
 export const CustomerList = () => {
   const [customers, setCustomers] = useState([]);
