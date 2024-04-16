@@ -32,3 +32,4 @@ export const ApplicationViews = () => {
     </Routes>
   );
 };
+//testing script
