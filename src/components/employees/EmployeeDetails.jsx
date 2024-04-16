@@ -1,38 +1,43 @@
 // src/components/employees/EmployeeDetails.jsx
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getEmployeeById } from "../../services/employeeServices";
+import { getEmployeeByUserId } from "../../services/employeeServices";
 import "./employeeStyles/EmployeeDetails.css";
 
 export const EmployeeDetails = () => {
     const [employee, setEmployee] = useState({});
-    const { employeeId } = useParams();
+    const { employeeUserId } = useParams();
 
     useEffect(() => {
-        getEmployeeById(employeeId).then(data => {
-            if (data) {
-                setEmployee(data);  
-            } else {
-                console.error("No employee found with this ID");
-                setEmployee({});
-            }
-        });
-    }, [employeeId]);
+        console.log("Fetching employee data for ID:", employeeUserId);
+    
+        if (employeeUserId) { // Check if employeeUserId is not undefined
+            const fetchEmployee = async () => {
+                const employee = await getEmployeeByUserId(employeeUserId);
+                setEmployee(employee);
+            };
+    
+            fetchEmployee();
+        } else {
+            console.log("No employeeUserId provided");
+        }
+    }, [employeeUserId]);
 
     return (
         <section className="employee">
-            <header className="employee-header">{employee.fullName}</header>
+            {/* Assuming `user` data is part of the employee object */}
+            <header className="employee-header">{employee.user?.fullName || 'No Name'}</header>
             <div>
                 <span className="employee-info">Email:</span>
-                {employee.email}
+                {employee?.email || 'No Email'}
             </div>
             <div>
-                <span className="employee-info">Address:</span>
-                {employee.address}
+                <span className="employee-info">Specialty:</span>
+                {employee?.specialty || 'No Specialty'}
             </div>
             <div>
-                <span className="employee-info">Phone Number:</span>
-                {employee.phoneNumber}
+                <span className="employee-info">Hourly Rate:</span>
+                {employee?.rate ? `$${employee.rate}` : 'No Rate'}
             </div>
         </section>
     );

@@ -25,7 +25,7 @@ export const ApplicationViews = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="tickets" element={<TicketList />} />
         <Route path="employees" element={<EmployeeList />} />
-        <Route path="employees/:employeeId" element={<EmployeeDetails />} />
+        <Route path="employees/:employeeUserId" element={<EmployeeDetails />} />
         <Route path="customers" element={<CustomerList />} />
         <Route path="customers/:customerId" element={<CustomerDetails />} />
       </Route>
