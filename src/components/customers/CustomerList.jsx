@@ -1,8 +1,9 @@
 // src/components/CustomerList.jsx
 import { useEffect, useState } from "react";
-import "./CustomerList.css";  // Make sure the path is correct based on your project structure
+import { Link } from "react-router-dom";
 import { getNonStaffUsers } from "../../services/userServices";
-import { User } from "../users/User";  // Make sure the path is correct based on your project structure
+import { User } from "../users/User";  
+import "./CustomerList.css";  
 
 export const CustomerList = () => {
   const [customers, setCustomers] = useState([]);
@@ -17,7 +18,9 @@ export const CustomerList = () => {
     <div className="customers">
       <h2>Who we're currently servicing</h2>
       {customers.map((customerObj) => (
-        <User key={customerObj.id} user={customerObj} />  
+        <Link key={customerObj.id} to={`/customers/${customerObj.id}`}>
+          <User  user={customerObj} />
+        </Link>  
       ))}
     </div>
   );

@@ -1,0 +1,31 @@
+/* src/components/navbar/navBar.css */
+
+.navbar {
+    display: flex;              /* Using flexbox for horizontal alignment */
+    list-style-type: none;      /* Remove bullet points from the list */
+    margin: 0;                  /* Remove default margin */
+    padding: 1rem;              /* Padding around the navbar for spacing */
+    background-color: var(--white); /* Background color consistent with your theme */
+    border-bottom: 1px solid var(--outline); /* A border at the bottom to separate from content */
+    justify-content: flex-start; /* Align items to the start of the navbar */
+  }
+  
+  .navbar-item {
+    margin: 0 1rem; /* Spacing between navigation items */
+    padding: 0.5rem 1rem; /* Padding for clickable area */
+    border-radius: 0.25rem; /* Rounded corners for each item */
+  }
+  
+  .navbar-item a {
+    text-decoration: none; /* No underline for links */
+    color: var(--dark); /* Text color for the links */
+    font-family: "Roboto", sans-serif; /* Consistent font usage */
+    font-size: 2rem; /* Standard font size */
+  }
+  
+  .navbar-item a:hover, .navbar-item a:focus {
+    background-color: var(--outline); /* Background color on hover or focus */
+    color: var(--white); /* Text color change on hover or focus */
+  }
+  
+  

@@ -13,3 +13,15 @@
     border-radius: 0.5rem;
     padding: 0.5rem;
   }
+
+  .customer-info {
+    color: var(--info);
+    font-family: "Roboto", sans-serif;
+  }
+  
+  .customer-header {
+    font-size: larger;
+    font-weight: 700;
+    line-height: 3rem;
+    color: var(--primary);
+  }
