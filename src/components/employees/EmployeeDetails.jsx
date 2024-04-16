@@ -5,40 +5,42 @@ import { getEmployeeByUserId } from "../../services/employeeServices";
 import "./employeeStyles/EmployeeDetails.css";
 
 export const EmployeeDetails = () => {
-    const [employee, setEmployee] = useState({});
+    const [user, setUser] = useState({}); // !  Use null or nullObject for initial state or user wont be defined 
     const { employeeUserId } = useParams();
 
     useEffect(() => {
-        console.log("Fetching employee data for ID:", employeeUserId);
-    
-        if (employeeUserId) { // Check if employeeUserId is not undefined
-            const fetchEmployee = async () => {
-                const employee = await getEmployeeByUserId(employeeUserId);
-                setEmployee(employee);
-            };
-    
-            fetchEmployee();
-        } else {
-            console.log("No employeeUserId provided");
-        }
+        const fetchEmployee = async () => {
+            const data = await getEmployeeByUserId(employeeUserId);
+            setUser(data); 
+        };
+
+        fetchEmployee();
     }, [employeeUserId]);
+
+    // Accessing the first employee from the employees array if it exists
+    const employee = user?.employees?.[0];
+
+    if (!user) return <div>Loading...</div>; // Show loading until data is available
 
     return (
         <section className="employee">
-            {/* Assuming `user` data is part of the employee object */}
-            <header className="employee-header">{employee.user?.fullName || 'No Name'}</header>
+            <header className="employee-header">{user.fullName || 'No Name'}</header>
             <div>
                 <span className="employee-info">Email:</span>
-                {employee?.email || 'No Email'}
+                {user.email || 'No Email'}
             </div>
-            <div>
-                <span className="employee-info">Specialty:</span>
-                {employee?.specialty || 'No Specialty'}
-            </div>
-            <div>
-                <span className="employee-info">Hourly Rate:</span>
-                {employee?.rate ? `$${employee.rate}` : 'No Rate'}
-            </div>
+            {employee && (
+                <>
+                    <div>
+                        <span className="employee-info">Specialty:</span>
+                        {employee.specialty || 'No Specialty'}
+                    </div>
+                    <div>
+                        <span className="employee-info">Hourly Rate:</span>
+                        {employee.rate ? `$${employee.rate}` : 'No Rate'}
+                    </div>
+                </>
+            )}
         </section>
     );
 };
