@@ -5,20 +5,24 @@ import { getAllTickets } from "../../services/ticketService.jsx";
 import { getAllEmployees } from "../../services/employeeServices.jsx";
 import { TicketFilterBar } from "./TicketFilterBar";
 
-export const TicketList = () => {
+export const TicketList = ({ currentUser }) => {
     const [allTickets, setAllTickets] = useState([]);
     const [allEmployees, setAllEmployees] = useState([]);
     const [showEmergencyOnly, setShowEmergencyOnly] = useState(false);
     const [filteredTickets, setFilteredTickets] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
 
-    useEffect(() => {
+    const getAndSetTickets = () => {
         getAllTickets().then((ticketsArray) => {
             setAllTickets(ticketsArray);
         });
         getAllEmployees().then((employeesArray) => {
             setAllEmployees(employeesArray);
         });
+    }
+
+    useEffect(() => {
+        getAndSetTickets()
     }, []);
 
     useEffect(() => {
@@ -50,7 +54,7 @@ export const TicketList = () => {
             </div>
             <article className="tickets">
                 {filteredTickets.map(ticket => (
-                    <Ticket key={ticket.id} ticket={ticket} />
+                    <Ticket key={ticket.id} currentUser={currentUser} getAndSetTickets={getAndSetTickets} ticket={ticket} />
                 ))}
             </article>
         </div>
