@@ -20,6 +20,9 @@ const navigate = useNavigate()
       <li className="navbar-item">
         <Link to="/employees">Employees</Link>
       </li>
+      <li className="navbar-item">
+        <Link to="/Profile">Profile</Link>
+      </li>
       {localStorage.getItem("honey_user") ? (
         <li className="navbar-item navbar-logout">
           <Link
