@@ -8,9 +8,18 @@ import { EmployeeList } from "../components/employees/EmployeeList";
 import { LandingPage } from "../components/landingPage/landingPage";
 import { NavBar } from "../components/navBar/navBar";
 import { EmployeeDetails } from "../components/employees/EmployeeDetails";
-
+import { useEffect, useState } from "react";
 
 export const ApplicationViews = () => {
+  const [currentUser, setCurrentUser] = useState({});
+
+  useEffect(() => {
+    const localHoneyUser = localStorage.getItem("honey_user");
+    const honeyUserObject = JSON.parse(localHoneyUser);
+
+    setCurrentUser(honeyUserObject);
+  }, []);
+
   return (
     <Routes>
       <Route
@@ -23,7 +32,10 @@ export const ApplicationViews = () => {
         }
       >
         <Route path="/" element={<LandingPage />} />
-        <Route path="tickets" element={<TicketList />} />
+        <Route
+          path="tickets"
+          element={<TicketList currentUser={currentUser} />}
+        />
         <Route path="employees" element={<EmployeeList />} />
         <Route path="employees/:employeeUserId" element={<EmployeeDetails />} />
         <Route path="customers" element={<CustomerList />} />
@@ -32,5 +44,3 @@ export const ApplicationViews = () => {
     </Routes>
   );
 };
-//testing script
-// Test
