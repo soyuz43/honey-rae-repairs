@@ -61,7 +61,7 @@ export const Ticket = ({ticket, currentUser, getAndSetTickets}) => {
         </div>
         <div className="btn-container">
           {/* Conditionally render Claim button if there is no assigned employee and user is staff */}
-          {currentUser.isStaff && !assignedEmployee && !ticket.dateCompleted && (
+          {currentUser.isStaff && !assignedEmployee &&  (
             <button className="btn btn-secondary" onClick={handleClaim}>
               Claim
             </button>
