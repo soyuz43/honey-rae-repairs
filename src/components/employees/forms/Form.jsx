@@ -2,72 +2,74 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getEmployeeByUserId, updateEmployee } from '../../../services/employeeServices';
+import { getAllEmployees, getEmployeeByUserId, updateEmployee } from '../../../services/employeeServices';
 import './Form.css';
 
 export const EmployeeForm = ({ currentUser }) => {
-  const [employee, setEmployee] = useState({ specialty: '', rate: 0 });
+  const [employee, setEmployee] = useState({});
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (currentUser && currentUser.id) {
-      getEmployeeByUserId(currentUser.id).then(data => {
-        if (data && data.length > 0) {
-          setEmployee(data[0]);
-        }
+  useEffect(() => { 
+      getAllEmployees(currentUser.id).then(data => {
+        const employeeObj = data[0]
+        setEmployee(employeeObj)
       });
-    }
   }, [currentUser]);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setEmployee(prev => ({ ...prev, [name]: value }));
-  };
+
 
   const handleSave = (event) => {
     event.preventDefault();
-    updateEmployee(employee).then(() => {
-      navigate(`/employees/${currentUser.id}`);
-    });
+    const editedEmployee = {
+      id: employee.id,
+      specialty: employee.specialty,
+      rate: employee.rate,
+      userId: employee.userId,
+    }
+    updateEmployee(editedEmployee).then(() => {
+      navigate(`/employees/${currentUser.id}`)
+    })
   };
 
   return (
     <form className="profile" onSubmit={handleSave}>
       <h2>Update Profile</h2>
   
-      {/* Display current specialty and rate */}
-      <div className="current-info">
-        <h3>Current Information</h3>
-        <p><strong>Specialty:</strong> {employee.specialty}</p>
-        <p><strong>Hourly Rate:</strong> ${employee.rate}</p>
-      </div>
-  
+     
       <fieldset>
         <div className="form-group">
-          <label htmlFor="specialty">Specialty</label>
+          <label>Specialty</label>
           <input
             type="text"
-            id="specialty"
-            name="specialty"
-            required
-            className="form-control"
             value={employee.specialty}
-            onChange={handleChange}
+              required
+              onChange={(event) =>{
+                const copy = { ...employee }
+                copy.specialty = event.target.value
+                  setEmployee(copy)
+              }}
+            className="form-control"
           />
         </div>
         <div className="form-group">
           <label htmlFor="rate">Hourly Rate</label>
           <input
             type="number"
-            id="rate"
-            name="rate"
-            required
-            className="form-control"
             value={employee.rate}
-            onChange={handleChange}
+                required
+                onChange={(event) =>{
+                const copy = { ...employee }
+                copy.rate = event.target.value
+                  setEmployee(copy)
+              }}
+            className="form-control"
           />
         </div>
-        <button type="submit" className="form-button">Save Profile</button>
+      </fieldset>
+      <fieldset>
+        <div>
+         <button className="form-button btn-primary" onClick={handleSave}>Save Profile</button>
+        </div>
       </fieldset>
     </form>
   );
