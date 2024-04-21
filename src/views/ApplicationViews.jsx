@@ -8,6 +8,7 @@ import { EmployeeList } from "../components/employees/EmployeeList";
 import { LandingPage } from "../components/landingPage/landingPage";
 import { NavBar } from "../components/navBar/navBar";
 import { EmployeeDetails } from "../components/employees/EmployeeDetails";
+import { EmployeeForm } from "../components/employees/forms/Form";
 import { useEffect, useState } from "react";
 
 export const ApplicationViews = () => {
@@ -36,6 +37,7 @@ export const ApplicationViews = () => {
           path="tickets"
           element={<TicketList currentUser={currentUser} />}
         />
+        <Route path="profile" element={<EmployeeForm currentUser={currentUser} />} />
         <Route path="employees" element={<EmployeeList />} />
         <Route path="employees/:employeeUserId" element={<EmployeeDetails />} />
         <Route path="customers" element={<CustomerList />} />
