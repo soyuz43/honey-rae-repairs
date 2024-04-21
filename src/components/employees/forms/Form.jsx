@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getAllEmployees, getEmployeeByUserId, updateEmployee } from '../../../services/employeeServices';
+import { getAllEmployees, updateEmployee } from '../../../services/employeeServices';
 import './Form.css';
 
 export const EmployeeForm = ({ currentUser }) => {
@@ -41,7 +41,7 @@ export const EmployeeForm = ({ currentUser }) => {
           <label>Specialty</label>
           <input
             type="text"
-            value={employee.specialty}
+            value={employee.specialty ? employee.specialty : ''}          // * Using a ternary to keep .specialty defined
               required
               onChange={(event) =>{
                 const copy = { ...employee }
@@ -55,7 +55,7 @@ export const EmployeeForm = ({ currentUser }) => {
           <label htmlFor="rate">Hourly Rate</label>
           <input
             type="number"
-            value={employee.rate}
+            value={employee.rate ? employee.rate : 0}                      // * Using a ternary to keep .rate defined
                 required
                 onChange={(event) =>{
                 const copy = { ...employee }

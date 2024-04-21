@@ -1,6 +1,6 @@
 // src/App.jsx
 import React from "react";
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route, } from "react-router-dom";
 
 import { Register } from "./components/auth/Register";
 import { Login } from "./components/auth/Login";
