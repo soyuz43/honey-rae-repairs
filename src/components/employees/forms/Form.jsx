@@ -41,6 +41,7 @@ export const EmployeeForm = ({ currentUser }) => {
           <label>Specialty</label>
           <input
             type="text"
+            name="specialty"
             value={employee.specialty ? employee.specialty : ''}          // * Using a ternary to keep .specialty defined
               required
               onChange={(event) =>{
@@ -55,6 +56,7 @@ export const EmployeeForm = ({ currentUser }) => {
           <label htmlFor="rate">Hourly Rate</label>
           <input
             type="number"
+            name="rate"
             value={employee.rate ? employee.rate : 0}                      // * Using a ternary to keep .rate defined
                 required
                 onChange={(event) =>{
