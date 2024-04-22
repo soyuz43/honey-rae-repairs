@@ -1,8 +1,8 @@
-// src/components/landingPage/LandingPage.jsx
+// src/components/landingPage/LandingPage.jsx 
+// this takes the place of home.jsx or homepage.jsx
 
 import React from "react";
-import './LandingPage.css'; // Make sure to include any necessary CSS
-
+import './LandingPage.css'; 
 export const LandingPage = () => {
     return (
         <div className="landing-container">
