@@ -12,18 +12,24 @@ export const TicketList = ({ currentUser }) => {
     const [filteredTickets, setFilteredTickets] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
 
+    // # Checks if the current user is staff or customer, filters and sets tickets that based on currentUser
     const getAndSetTickets = () => {
         getAllTickets().then((ticketsArray) => {
-            setAllTickets(ticketsArray);
+            // Ternary to determine what state to set to the tickets array
+            const ticketsToSet = (currentUser.isStaff) 
+                ? ticketsArray 
+                : ticketsArray.filter(ticket => ticket.userId === currentUser.id);
+            
+            setAllTickets(ticketsToSet);
         });
         getAllEmployees().then((employeesArray) => {
             setAllEmployees(employeesArray);
         });
     }
-
+    
     useEffect(() => {
         getAndSetTickets()
-    }, []);
+    }, [currentUser]);
 
     useEffect(() => {
         let tickets = allTickets;
@@ -31,7 +37,7 @@ export const TicketList = ({ currentUser }) => {
             tickets = tickets.filter(ticket => ticket.emergency === true);
         }
         if (searchTerm) {
-            tickets = tickets.filter(ticket => {    // * search now by ticket # and/or employee name!
+            tickets = tickets.filter(ticket => {    // * Expanded search to be able to search by ticket # and/or employee name!
                 const ticketDescMatch = ticket.description.toLowerCase().includes(searchTerm.toLowerCase());
                 const employee = allEmployees.find(emp => emp.id === ticket.employeeTickets[0]?.employeeId);
                 const employeeNameMatch = employee ? employee.user.fullName.toLowerCase().includes(searchTerm.toLowerCase()) : false;

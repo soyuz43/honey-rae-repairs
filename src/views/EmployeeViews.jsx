@@ -31,13 +31,13 @@ export const EmployeeViews = ({ currentUser }) => {
         <Route path="employees">
           <Route index element={<EmployeeList />} />
           <Route path=":employeeUserId" element={<EmployeeDetails />} />
-        </Route>{" "}
+        </Route>
         {/* # End Nested Employee Route*/}
 
-        <Route path="custormers">
-          <Route path="customers" element={<CustomerList />} />
+        <Route path="customers">
+          <Route index element={<CustomerList />} />
           <Route path="customerId" element={<CustomerDetails />} />
-        </Route>{" "}
+        </Route>
         {/* # End Nested Customer Route*/}
 
         <Route
