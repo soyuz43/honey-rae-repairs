@@ -1,8 +1,7 @@
-    // src/views/ApplicationViews.jsx
-    import React, { useEffect, useState } from "react";
-    import { EmployeeViews } from "./EmployeeViews";
-    import { CustomerViews } from "./CustomerViews";
-
+// src/views/ApplicationViews.jsx
+import React, { useEffect, useState } from "react";
+import { EmployeeViews } from "./EmployeeViews";
+import { CustomerViews } from "./CustomerViews";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -14,7 +13,9 @@ export const ApplicationViews = () => {
     setCurrentUser(honeyUserObject);
   }, []);
 
-  return currentUser?.isStaff 
-        ? <EmployeeViews currentUser={currentUser} />
-        : <CustomerViews currentUser={currentUser} />;
+  return currentUser?.isStaff ? (
+    <EmployeeViews currentUser={currentUser} />
+  ) : (
+    <CustomerViews currentUser={currentUser} />
+  );
 };
