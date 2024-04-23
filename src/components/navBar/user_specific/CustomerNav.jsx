@@ -14,12 +14,10 @@ const CustomerNav = () => {
 
     return (
         <ul className="navbar">
-            <li className="navbar-item"><Link className="navbar-link" to="/tickets">
-                                            Tickets
-                                        </Link></li>
             <li className="navbar-item"><Link to="/">Home</Link></li>
+            <li className="navbar-item"><Link className="navbar-link" to="/tickets">My Tickets</Link></li>
             
-            <li className="navbar-item"><Link to="/profile">Profile</Link></li>
+            <li className="navbar-item"><Link to="/profile">My Profile</Link></li>
             <li className="navbar-item navbar-logout">
                 <button onClick={handleLogout}>Logout</button>
             </li>
